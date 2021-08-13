@@ -1,5 +1,7 @@
 package com.bridgelabz;
 
+import java.util.ArrayList;
+
 /* @Description- calculate fare given distance and time invoice generator should return the
  *   total fare of journey. */
 public class InvoiceGenerator {
@@ -18,14 +20,15 @@ public class InvoiceGenerator {
         return NormaltotalFare;
     }
     /* @Description -the invoice generator should now take in multiple rides  and calculate total fare
-     *  the invoice generator should now return total number of rides, total fare and average fare */
+     *  the invoice generator should now return total number of rides, total fare and average fare
+     *  given a user id the invoice service gets the list of rides and the return the invoice */
 
-    public InvoiceSummary  calculateFare(Ride[] rides) {
+    public InvoiceSummary  calculateFare(ArrayList<Ride> rides) {
         double totalFare = 0;
         for (Ride ride:rides) {
             totalFare += this.calculateFare(ride.distance, ride.time);
         }
-        return new InvoiceSummary(rides.length, totalFare);
+        return new InvoiceSummary(rides.size(), totalFare);
     }
 
 
