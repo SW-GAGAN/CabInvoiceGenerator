@@ -3,9 +3,6 @@ package com.bridgelabz;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-
 public class InvoiceServiceTest {
     @Test
     public void givenDistanceAndTime_ShouldReturnTotalFare() {
@@ -26,12 +23,14 @@ public class InvoiceServiceTest {
     }
 
     @Test
-    public void givenMultipleRides_ShouldReturnTotalFare() {
-        InvoiceGenerator invoiceGenerator = new InvoiceGenerator();
+    public void givenMultipleRides_ShouldReturnInvoiceSummary() {
+        InvoiceGenerator invoiceGenerator= new InvoiceGenerator();
         Ride[] rides = {new Ride(2.0, 5),
                 new Ride(0.1, 1)
         };
-        double fare = invoiceGenerator.calculateFare(rides);
-        Assertions.assertEquals(30, fare, 0.0);
+        InvoiceSummary summary = invoiceGenerator.calculateFare(rides);
+        InvoiceSummary exceptedinvoiceSummary = new InvoiceSummary(2, 30.0);
+        Assertions.assertEquals(exceptedinvoiceSummary, summary);
+
     }
 }

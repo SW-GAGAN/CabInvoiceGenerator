@@ -17,18 +17,19 @@ public class InvoiceGenerator {
         }
         return NormaltotalFare;
     }
-    /* @Description -the invoice generator should now take in multiple rides  and calculate total fare */
+    /* @Description -the invoice generator should now take in multiple rides  and calculate total fare
+     *  the invoice generator should now return total number of rides, total fare and average fare */
 
-    public double calculateFare(Ride[] rides) {
+    public InvoiceSummary  calculateFare(Ride[] rides) {
         double totalFare = 0;
         for (Ride ride:rides) {
             totalFare += this.calculateFare(ride.distance, ride.time);
         }
-        return totalFare;
+        return new InvoiceSummary(rides.length, totalFare);
     }
+
 
     public static void main(String[] args) {
         System.out.println("Welcome cab invoice generator");
     }
 }
-
