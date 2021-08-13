@@ -31,6 +31,13 @@ public class InvoiceGenerator {
         return new InvoiceSummary(rides.size(), totalFare);
     }
 
+    public double calculatePremiumFare(double distance, int time) {
+        double PremiumtotalFare =  distance * PREMIUM_MINIMUN_COST_PER_KILOMETER + time * PREMIUM_COST_PER_TIME ;
+        if(PremiumtotalFare < PREMIUM_MINIMUN_FARE ) {
+            return  PREMIUM_MINIMUN_FARE;
+        }
+        return PremiumtotalFare;
+    }
 
     public static void main(String[] args) {
         System.out.println("Welcome cab invoice generator");
