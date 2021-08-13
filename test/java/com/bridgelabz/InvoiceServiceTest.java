@@ -13,3 +13,4 @@ public class InvoiceServiceTest {
         Assertions.assertEquals(25,fare,0.0);
     }
 }
+
